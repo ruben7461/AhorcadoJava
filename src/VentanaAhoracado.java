@@ -59,6 +59,37 @@ public class VentanaAhoracado extends javax.swing.JFrame {
             PanelAhorcado.setIcon(miImagen);
     }
     
+    private void chequeaLetra(String letra){
+        
+        //convertimos la palabra en mayuscula
+        letra = letra.toUpperCase();
+        //creamos un string con guiones para poder conpararlo luego
+        //String palabraConGuiones = Pantalla.getText();
+        StringBuilder palabraConGuiones = new StringBuilder(Pantalla.getText());
+        //si esta la palabra,
+        
+        if(palabraOculta.contains(letra)){
+            
+            for (int  i= 0; i < palabraOculta.length(); i++){
+                if(palabraOculta.charAt(i) == letra.charAt(0)){
+                 palabraConGuiones.setCharAt(2*i,letra.charAt(0));
+                    
+                }
+                Pantalla.setText(palabraConGuiones.toString());
+            }
+        }
+        //si no esta,dibujamos la imagen
+        else{
+            numeroFallos++;
+            dibujaImagen(numeroFallos);
+        }
+    }
+    
+    
+    private void chequeaBoton(JButton miBoton){
+        miBoton.setEnabled(false);
+        chequeaLetra(miBoton.getText());
+    }
     
     
     /**
@@ -423,39 +454,6 @@ public class VentanaAhoracado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chequeaLetra(String letra){
-        
-        //convertimos la palabra en mayuscula
-        letra = letra.toUpperCase();
-        //creamos un string con guiones para poder conpararlo luego
-        //String palabraConGuiones = Pantalla.getText();
-        StringBuilder palabraConGuiones = new StringBuilder(Pantalla.getText());
-        //si esta la palabra,
-        
-        if(palabraOculta.contains(letra)){
-            
-            for (int  i= 0; i < palabraOculta.length(); i++){
-                if(palabraOculta.charAt(i) == letra.charAt(0)){
-                 palabraConGuiones.setCharAt(2*i,letra.charAt(0));
-                    
-                }
-                Pantalla.setText(palabraConGuiones.toString());
-            }
-        }
-        //si no esta,dibujamos la imagen
-        else{
-            numeroFallos++;
-            dibujaImagen(numeroFallos);
-        }
-    }
-    
-    
-    private void chequeaBoton(JButton miBoton){
-        miBoton.setEnabled(false);
-        chequeaLetra(miBoton.getText());
-    }
-    
-   
     
     private void AMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AMousePressed
         chequeaBoton( (JButton)evt.getSource());
