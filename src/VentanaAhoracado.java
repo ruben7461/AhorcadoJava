@@ -1,6 +1,7 @@
 
 import java.awt.Image;
 import java.net.URL;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -17,9 +18,10 @@ import javax.swing.JButton;
 public class VentanaAhoracado extends javax.swing.JFrame {
 
     
-    String palabraOculta ="PLATAOPLOMO";
+    String palabraOculta;
     
-    String [] listaDePalabras = new String[10];
+    String [] listaDePalabras;
+    
     
     int numeroFallos = 0;
     /**
@@ -27,6 +29,8 @@ public class VentanaAhoracado extends javax.swing.JFrame {
      */
     public VentanaAhoracado() {
         initComponents();
+        
+        
         
         
         //dibuja la imagen del ahorcado sin fallos
@@ -55,6 +59,7 @@ public class VentanaAhoracado extends javax.swing.JFrame {
     case 3: nombreImagen = getClass().getResource("/Imagenes/ahorcado_3.png");break;
     case 4: nombreImagen = getClass().getResource("/Imagenes/ahorcado_4.png");break;
     case 5: nombreImagen = getClass().getResource("/Imagenes/ahorcado_5.png");break;
+    case -1: nombreImagen = getClass().getResource("/Imagenes/acertasteTodo.png");break;
     default: nombreImagen = getClass().getResource("/Imagenes/ahorcado_fin.png");break;
      
 }
@@ -93,6 +98,13 @@ public class VentanaAhoracado extends javax.swing.JFrame {
             numeroFallos++;
             dibujaImagen(numeroFallos);
         }
+        
+        if (!Pantalla.getText().contains("_")){
+             dibujaImagen(-1);
+        }
+        
+    
+       
     }
     
     
@@ -125,7 +137,33 @@ public class VentanaAhoracado extends javax.swing.JFrame {
     
     
     
-    
+    private void eligePalabraParaAdivinar(){
+        
+        
+      //esto lo utilizariamos si declaramos el array al inicio y aqui 
+      //declaramos las constantes
+//        listaDePalabras[0] = "CETYS";
+//        listaDePalabras[1] = "MERCURIO";
+//        listaDePalabras[2] = "VENUS";
+//        listaDePalabras[3] = "TIERRA";
+//        listaDePalabras[4] = "MARTE";
+//        listaDePalabras[5] = "JUPITER";
+//        listaDePalabras[6] = "SATURNO";
+//        listaDePalabras[7] = "URANO";
+//        listaDePalabras[8] = "NEPTUNO";
+//        listaDePalabras[9] = "PLUTON";
+//        
+
+//esta seria la forma mas comoda y mas legible que la otra 
+ listaDePalabras = new String[] {"CETYS","MERCURIO", "VENUS", "TIERRA", "MARTE", "JUPITER", "SATURNO","URANO", "NEPTUNO", "PLUTON"};
+
+        Random aleatorio = new Random();
+        
+        //elijo una posicion al azar
+        int posicionElegida = aleatorio.nextInt(listaDePalabras.length);
+        //guardo en la palabraocialta la que haya salido al azar
+        palabraOculta = listaDePalabras[posicionElegida];
+    }
     
     
     
