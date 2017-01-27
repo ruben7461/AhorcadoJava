@@ -30,7 +30,7 @@ public class VentanaAhoracado extends javax.swing.JFrame {
     public VentanaAhoracado() {
         initComponents();
         
-        
+        eligePalabraParaAdivinar();
         
         
         //dibuja la imagen del ahorcado sin fallos
