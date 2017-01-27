@@ -17,8 +17,9 @@ import javax.swing.JButton;
 public class VentanaAhoracado extends javax.swing.JFrame {
 
     
-    String palabraOculta ="CETYS";
+    String palabraOculta ="PLATAOPLOMO";
     
+    String [] listaDePalabras = new String[10];
     
     int numeroFallos = 0;
     /**
@@ -30,7 +31,13 @@ public class VentanaAhoracado extends javax.swing.JFrame {
         
         //dibuja la imagen del ahorcado sin fallos
         dibujaImagen(0);
+        ponGuiones();
     }
+    
+    
+    
+    
+    
     
     
     //dibuja la imagen del ahorcado fallos
@@ -59,6 +66,9 @@ public class VentanaAhoracado extends javax.swing.JFrame {
             PanelAhorcado.setIcon(miImagen);
     }
     
+    
+    
+    
     private void chequeaLetra(String letra){
         
         //convertimos la palabra en mayuscula
@@ -86,10 +96,37 @@ public class VentanaAhoracado extends javax.swing.JFrame {
     }
     
     
+    
+    //comprobamos que sea la misma letra que pulsamos con la de la del string 
     private void chequeaBoton(JButton miBoton){
         miBoton.setEnabled(false);
         chequeaLetra(miBoton.getText());
     }
+    
+    
+    
+    
+    
+    
+    
+    private void ponGuiones(){
+        
+        //crea un nuwvo string con tantos guines bajos y espacios en blanco
+        //como letras tenga que adivinar
+      String palabraConGuiones = "";
+      
+      for (int i=0; i<palabraOculta.length(); i++){
+        palabraConGuiones = palabraConGuiones + "_ ";
+      
+        }
+      Pantalla.setText((palabraConGuiones));
+      
+    }
+    
+    
+    
+    
+    
     
     
     /**
